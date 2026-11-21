@@ -1,0 +1,1831 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>混剪pmvyandex - 原创影像,让每一帧都有力量</title>
+<meta name="description" content="混剪pmvyandex官方网站：专注混剪pmvyandex原创影像内容的视频品牌平台，汇聚优质创作者，深耕二次创作与剪辑表达，为企业与用户搭建高品质内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230e7490'/%3E%3Cstop offset='1' stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M20 18 L20 46 L48 32 Z' fill='%23ffffff' opacity='0.92'/%3E%3C/svg%3E">
+<style>
+:root{
+  --mpx-ink:#0b1f2a;
+  --mpx-ink-soft:#274454;
+  --mpx-teal:#0e7490;
+  --mpx-teal-deep:#0a5a70;
+  --mpx-orange:#f97316;
+  --mpx-orange-soft:#fb923c;
+  --mpx-paper:#f5f9fb;
+  --mpx-line:#d7e5ec;
+  --mpx-white:#ffffff;
+  --mpx-shadow:0 14px 40px -18px rgba(11,31,42,.35);
+  --mpx-radius:18px;
+  --mpx-nav-h:64px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:150px;}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,sans-serif;
+  color:var(--mpx-ink);
+  background:var(--mpx-paper);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+ul{list-style:none;}
+
+/* ===== 吸顶区 ===== */
+.mpx-sticky-shell{
+  position:sticky;top:0;z-index:900;
+  box-shadow:0 6px 24px -14px rgba(11,31,42,.4);
+}
+.mpx-announce{
+  background:linear-gradient(90deg,var(--mpx-ink),var(--mpx-teal-deep) 55%,var(--mpx-teal));
+  color:#e6f5fa;
+  font-size:.86rem;
+}
+.mpx-announce__inner{
+  max-width:1200px;margin:0 auto;padding:.55rem 1.25rem;
+  display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;
+}
+.mpx-announce__tag{
+  background:var(--mpx-orange);color:#fff;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  padding:.1rem .55rem;border-radius:999px;flex-shrink:0;
+}
+.mpx-announce__text{flex:1;min-width:180px;color:#d7eef6;}
+.mpx-announce__link{
+  color:#ffd9bf;font-weight:600;white-space:nowrap;
+  border-bottom:1px dashed rgba(255,217,191,.6);
+  padding-bottom:1px;transition:color .2s;
+}
+.mpx-announce__link:hover{color:#fff;}
+
+.mpx-header{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--mpx-line);
+}
+.mpx-header__inner{
+  max-width:1200px;margin:0 auto;
+  padding:.55rem 1.25rem;
+  min-height:var(--mpx-nav-h);
+  display:flex;align-items:center;gap:1.1rem;
+}
+.mpx-logo{
+  display:flex;align-items:center;gap:.55rem;
+  font-weight:800;font-size:1.06rem;letter-spacing:.01em;flex-shrink:0;
+}
+.mpx-logo__mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--mpx-teal),var(--mpx-orange));
+  display:grid;place-items:center;flex-shrink:0;
+}
+.mpx-logo__mark svg{width:18px;height:18px;}
+.mpx-logo__text small{
+  display:block;font-size:.62rem;font-weight:600;color:var(--mpx-teal);
+  letter-spacing:.28em;line-height:1.2;
+}
+.mpx-nav{margin-left:auto;}
+.mpx-nav__list{display:flex;align-items:center;gap:.2rem;}
+.mpx-nav__link{
+  display:block;padding:.45rem .78rem;border-radius:999px;
+  font-size:.9rem;font-weight:500;color:var(--mpx-ink-soft);
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.mpx-nav__link:hover,.mpx-nav__link:focus-visible{
+  background:#e6f2f7;color:var(--mpx-teal-deep);
+}
+.mpx-search{
+  position:relative;flex-shrink:0;
+  width:190px;
+}
+.mpx-search__input{
+  width:100%;padding:.42rem .9rem .42rem 2rem;
+  border:1px solid var(--mpx-line);border-radius:999px;
+  font-size:.84rem;background:#f2f8fb;color:var(--mpx-ink);
+  transition:border .2s,background .2s,box-shadow .2s;
+}
+.mpx-search__input:focus{
+  outline:none;border-color:var(--mpx-teal);background:#fff;
+  box-shadow:0 0 0 3px rgba(14,116,144,.12);
+}
+.mpx-search__icon{
+  position:absolute;left:.65rem;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;opacity:.5;pointer-events:none;
+}
+.mpx-search__hint{
+  position:absolute;left:0;right:0;top:calc(100% + .35rem);
+  background:#fff;border:1px solid var(--mpx-line);border-radius:12px;
+  box-shadow:var(--mpx-shadow);padding:.5rem .65rem;font-size:.8rem;
+  color:var(--mpx-ink-soft);display:none;z-index:50;
+}
+.mpx-search__hint.is-show{display:block;}
+.mpx-search__hint b{color:var(--mpx-orange);}
+.mpx-burger{
+  display:none;width:42px;height:42px;border-radius:11px;
+  border:1px solid var(--mpx-line);margin-left:auto;
+  place-items:center;background:#fff;
+}
+.mpx-burger span{
+  display:block;width:18px;height:2px;background:var(--mpx-ink);
+  margin:2.5px auto;border-radius:2px;transition:transform .25s,opacity .25s;
+}
+.mpx-burger.is-open span:nth-child(1){transform:translateY(5px) rotate(45deg);}
+.mpx-burger.is-open span:nth-child(2){opacity:0;}
+.mpx-burger.is-open span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+
+@media(max-width:1000px){
+  .mpx-burger{display:grid;}
+  .mpx-nav{
+    position:absolute;left:0;right:0;top:100%;
+    background:#fff;border-bottom:1px solid var(--mpx-line);
+    padding:.5rem .9rem 1rem;display:none;
+    box-shadow:0 18px 30px -22px rgba(11,31,42,.6);
+  }
+  .mpx-nav.is-open{display:block;}
+  .mpx-nav__list{flex-direction:column;align-items:stretch;gap:.15rem;}
+  .mpx-nav__link{padding:.6rem .8rem;border-radius:10px;}
+  .mpx-search{width:150px;margin-left:.5rem;}
+}
+@media(max-width:620px){
+  .mpx-search{display:none;}
+  .mpx-header__inner{gap:.6rem;}
+}
+
+/* ===== 通用容器 ===== */
+.mpx-wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem;}
+.mpx-section{padding:4.2rem 0;}
+.mpx-section--tight{padding:3rem 0;}
+.mpx-kicker{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.76rem;font-weight:700;letter-spacing:.2em;
+  color:var(--mpx-teal);text-transform:uppercase;
+}
+.mpx-kicker::before{
+  content:"";width:22px;height:2px;background:var(--mpx-orange);border-radius:2px;
+}
+.mpx-h2{
+  font-size:clamp(1.5rem,2.6vw,2.05rem);
+  line-height:1.3;font-weight:800;letter-spacing:.01em;margin:.6rem 0 .7rem;
+}
+.mpx-sub{color:var(--mpx-ink-soft);font-size:.95rem;max-width:640px;}
+.mpx-sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1rem 1.5rem;margin-bottom:2.2rem;}
+.mpx-sec-head__more{
+  margin-left:auto;font-size:.86rem;font-weight:600;color:var(--mpx-teal);
+  border:1px solid var(--mpx-line);padding:.42rem 1rem;border-radius:999px;
+  transition:background .2s,color .2s,border .2s;
+}
+.mpx-sec-head__more:hover{background:var(--mpx-teal);color:#fff;border-color:var(--mpx-teal);}
+
+/* ===== 首屏 ===== */
+.mpx-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 460px at 88% -10%,rgba(249,115,22,.22),transparent 62%),
+    radial-gradient(700px 420px at 4% 110%,rgba(14,116,144,.22),transparent 60%),
+    linear-gradient(160deg,#f0f8fb,#e7f1f6 60%,#fdf3ea);
+  border-bottom:1px solid var(--mpx-line);
+}
+.mpx-hero__inner{
+  max-width:1200px;margin:0 auto;padding:3.6rem 1.25rem 3.4rem;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:2.8rem;align-items:center;
+}
+.mpx-hero__badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:#fff;border:1px solid var(--mpx-line);
+  padding:.32rem .85rem;border-radius:999px;
+  font-size:.8rem;font-weight:600;color:var(--mpx-teal-deep);
+  box-shadow:0 6px 18px -14px rgba(11,31,42,.6);
+}
+.mpx-hero__badge i{
+  width:7px;height:7px;border-radius:50%;background:var(--mpx-orange);
+  animation:mpxPulse 1.8s infinite;
+}
+@keyframes mpxPulse{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,.55);}50%{box-shadow:0 0 0 6px rgba(249,115,22,0);}}
+.mpx-hero h1{
+  font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.14;
+  font-weight:900;letter-spacing:-.01em;margin:1rem 0 .9rem;
+}
+.mpx-hero h1 em{
+  font-style:normal;
+  background:linear-gradient(120deg,var(--mpx-teal),var(--mpx-orange));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.mpx-hero__lead{color:var(--mpx-ink-soft);font-size:1rem;max-width:520px;}
+.mpx-hero__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.6rem 0 1.9rem;}
+.mpx-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.74rem 1.5rem;border-radius:999px;font-size:.92rem;font-weight:700;
+  transition:transform .18s,box-shadow .18s,background .18s,color .18s;
+}
+.mpx-btn:active{transform:translateY(1px) scale(.99);}
+.mpx-btn--primary{
+  background:linear-gradient(120deg,var(--mpx-teal-deep),var(--mpx-teal));
+  color:#fff;box-shadow:0 14px 30px -16px rgba(14,116,144,.9);
+}
+.mpx-btn--primary:hover{box-shadow:0 18px 34px -14px rgba(14,116,144,.85);transform:translateY(-2px);}
+.mpx-btn--ghost{
+  background:#fff;color:var(--mpx-teal-deep);border:1px solid var(--mpx-line);
+}
+.mpx-btn--ghost:hover{border-color:var(--mpx-teal);background:#eff8fb;}
+.mpx-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  border-top:1px dashed var(--mpx-line);padding-top:1.3rem;max-width:520px;
+}
+.mpx-stats__num{
+  font-size:1.5rem;font-weight:900;color:var(--mpx-teal-deep);
+  letter-spacing:-.01em;line-height:1.2;
+}
+.mpx-stats__num small{font-size:.8rem;font-weight:700;color:var(--mpx-orange);margin-left:2px;}
+.mpx-stats__label{font-size:.78rem;color:var(--mpx-ink-soft);}
+
+.mpx-hero__visual{position:relative;}
+.mpx-hero__frame{
+  position:relative;border-radius:24px;overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(11,31,42,.55);
+  border:1px solid rgba(255,255,255,.8);
+  transform:rotate(-1.2deg);
+}
+.mpx-hero__frame svg{display:block;width:100%;height:auto;}
+.mpx-hero__float{
+  position:absolute;right:-10px;bottom:-18px;
+  background:#fff;border-radius:16px;padding:.7rem .95rem;
+  box-shadow:var(--mpx-shadow);display:flex;align-items:center;gap:.65rem;
+  border:1px solid var(--mpx-line);
+}
+.mpx-hero__float b{font-size:.95rem;color:var(--mpx-ink);}
+.mpx-hero__float span{display:block;font-size:.72rem;color:var(--mpx-ink-soft);}
+.mpx-hero__float-ic{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--mpx-orange),#fbbf24);
+  display:grid;place-items:center;color:#fff;font-weight:900;
+}
+@media(max-width:900px){
+  .mpx-hero__inner{grid-template-columns:1fr;gap:2rem;padding-top:2.6rem;}
+  .mpx-hero__visual{order:-1;max-width:520px;}
+}
+
+/* ===== 深度解析 ===== */
+.mpx-about{
+  background:#fff;border-bottom:1px solid var(--mpx-line);
+}
+.mpx-about__grid{
+  display:grid;grid-template-columns:.9fr 1.5fr;gap:2.6rem;align-items:start;
+}
+.mpx-about__panel{
+  position:sticky;top:160px;
+  background:linear-gradient(160deg,#0b1f2a,#0e7490);
+  color:#dceff5;border-radius:20px;padding:1.7rem 1.5rem;
+  box-shadow:var(--mpx-shadow);
+}
+.mpx-about__panel h3{font-size:1.1rem;color:#fff;margin-bottom:.6rem;}
+.mpx-about__panel p{font-size:.88rem;color:#bcd9e4;margin-bottom:1rem;}
+.mpx-about__panel ul{display:grid;gap:.55rem;font-size:.86rem;}
+.mpx-about__panel li{display:flex;gap:.5rem;align-items:flex-start;color:#d5ebf3;}
+.mpx-about__panel li::before{
+  content:"◆";color:var(--mpx-orange-soft);font-size:.6rem;line-height:1.9;
+}
+.mpx-about__body p{color:var(--mpx-ink-soft);font-size:.96rem;margin-bottom:1.05rem;text-align:justify;}
+.mpx-about__body p strong{color:var(--mpx-ink);font-weight:700;}
+.mpx-about__body h3{
+  font-size:1.12rem;font-weight:800;margin:1.6rem 0 .6rem;
+  padding-left:.7rem;border-left:4px solid var(--mpx-orange);line-height:1.4;
+}
+@media(max-width:860px){
+  .mpx-about__grid{grid-template-columns:1fr;}
+  .mpx-about__panel{position:static;}
+}
+
+/* ===== 焦点视频 ===== */
+.mpx-spotlight{background:var(--mpx-paper);}
+.mpx-spot-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:1.4rem;}
+.mpx-spot-main{
+  position:relative;border-radius:var(--mpx-radius);overflow:hidden;
+  box-shadow:var(--mpx-shadow);background:#0b1f2a;
+  transition:transform .25s;
+}
+.mpx-spot-main:hover{transform:translateY(-4px);}
+.mpx-spot-main__cover{position:relative;}
+.mpx-spot-main__cover svg{display:block;width:100%;height:auto;}
+.mpx-spot-main__body{padding:1.15rem 1.3rem 1.4rem;color:#fff;}
+.mpx-spot-main__tag{
+  display:inline-block;background:var(--mpx-orange);color:#fff;
+  font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:999px;
+  letter-spacing:.05em;margin-bottom:.55rem;
+}
+.mpx-spot-main__title{font-size:1.22rem;font-weight:800;line-height:1.35;}
+.mpx-spot-main__desc{font-size:.86rem;color:#a9c7d3;margin-top:.45rem;}
+.mpx-spot-main__meta{
+  display:flex;flex-wrap:wrap;gap:.9rem;font-size:.78rem;color:#89afc0;margin-top:.8rem;
+}
+.mpx-spot-side{display:grid;gap:1rem;}
+.mpx-spot-mini{
+  display:grid;grid-template-columns:132px 1fr;gap:.9rem;
+  background:#fff;border:1px solid var(--mpx-line);border-radius:14px;
+  padding:.6rem;transition:transform .22s,box-shadow .22s,border .22s;
+}
+.mpx-spot-mini:hover{transform:translateX(4px);box-shadow:var(--mpx-shadow);border-color:#bcd8e4;}
+.mpx-spot-mini__thumb{border-radius:10px;overflow:hidden;height:100%;}
+.mpx-spot-mini__thumb svg{display:block;width:100%;height:100%;}
+.mpx-spot-mini__title{font-size:.92rem;font-weight:700;line-height:1.4;}
+.mpx-spot-mini__meta{font-size:.75rem;color:var(--mpx-ink-soft);margin-top:.3rem;}
+@media(max-width:820px){
+  .mpx-spot-grid{grid-template-columns:1fr;}
+}
+
+/* ===== 视频卡片流 ===== */
+.mpx-videos{background:#fff;border-top:1px solid var(--mpx-line);border-bottom:1px solid var(--mpx-line);}
+.mpx-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem;}
+.mpx-chip{
+  padding:.38rem 1rem;border-radius:999px;font-size:.83rem;font-weight:600;
+  background:#f0f7fa;color:var(--mpx-ink-soft);border:1px solid transparent;
+  transition:all .2s;
+}
+.mpx-chip.is-active,.mpx-chip:hover{background:var(--mpx-teal);color:#fff;border-color:var(--mpx-teal);}
+.mpx-vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.mpx-card{
+  background:#fff;border:1px solid var(--mpx-line);border-radius:16px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .24s,box-shadow .24s,border .24s;
+}
+.mpx-card:hover{transform:translateY(-5px);box-shadow:var(--mpx-shadow);border-color:#c3dce7;}
+.mpx-card__cover{position:relative;}
+.mpx-card__cover svg{display:block;width:100%;height:auto;}
+.mpx-card__body{padding:.95rem 1rem 1.05rem;flex:1;display:flex;flex-direction:column;}
+.mpx-card__title{font-size:.98rem;font-weight:700;line-height:1.45;}
+.mpx-card__desc{font-size:.82rem;color:var(--mpx-ink-soft);margin-top:.35rem;flex:1;}
+.mpx-card__tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem;}
+.mpx-card__tags span{
+  font-size:.7rem;background:#eef6f9;color:var(--mpx-teal-deep);
+  padding:.1rem .5rem;border-radius:6px;
+}
+.mpx-card__foot{
+  display:flex;align-items:center;gap:.55rem;margin-top:.8rem;
+  padding-top:.7rem;border-top:1px dashed var(--mpx-line);font-size:.78rem;color:var(--mpx-ink-soft);
+}
+.mpx-avatar{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#fff;
+}
+.mpx-card__foot .mpx-avatar{margin-right:.1rem;}
+.mpx-card__actions{margin-left:auto;display:flex;gap:.35rem;}
+.mpx-icon-btn{
+  display:inline-flex;align-items:center;gap:.25rem;
+  font-size:.76rem;padding:.2rem .5rem;border-radius:8px;
+  color:var(--mpx-ink-soft);transition:background .2s,color .2s;
+}
+.mpx-icon-btn:hover{background:#eef6f9;color:var(--mpx-teal-deep);}
+.mpx-icon-btn.is-liked{color:var(--mpx-orange);}
+.mpx-icon-btn.is-saved{color:var(--mpx-teal);}
+.mpx-icon-btn svg{width:13px;height:13px;fill:currentColor;}
+@media(max-width:960px){.mpx-vgrid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.mpx-vgrid{grid-template-columns:1fr;}}
+
+/* ===== 专题 ===== */
+.mpx-topics{background:linear-gradient(180deg,#f0f8fb,#ffffff);}
+.mpx-topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.mpx-topic{
+  border-radius:16px;overflow:hidden;position:relative;
+  color:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.2rem;box-shadow:0 18px 34px -26px rgba(11,31,42,.8);
+  transition:transform .24s;
+}
+.mpx-topic:hover{transform:translateY(-4px);}
+.mpx-topic--wide{grid-column:span 2;}
+.mpx-topic__bg{position:absolute;inset:0;z-index:0;}
+.mpx-topic__bg svg{width:100%;height:100%;object-fit:cover;}
+.mpx-topic__inner{position:relative;z-index:1;}
+.mpx-topic__state{
+  display:inline-block;font-size:.7rem;font-weight:700;
+  background:rgba(255,255,255,.22);backdrop-filter:blur(4px);
+  padding:.12rem .55rem;border-radius:999px;margin-bottom:.5rem;
+}
+.mpx-topic h3{font-size:1.04rem;font-weight:800;line-height:1.35;}
+.mpx-topic p{font-size:.8rem;opacity:.88;margin-top:.3rem;}
+@media(max-width:960px){.mpx-topic-grid{grid-template-columns:repeat(2,1fr);}.mpx-topic--wide{grid-column:span 1;}}
+@media(max-width:620px){.mpx-topic-grid{grid-template-columns:1fr;}}
+
+/* ===== 创作者 ===== */
+.mpx-creators{background:#fff;border-top:1px solid var(--mpx-line);}
+.mpx-creator-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;}
+.mpx-creator{
+  border:1px solid var(--mpx-line);border-radius:16px;padding:1.2rem;
+  background:linear-gradient(170deg,#fff,#f7fbfd);
+  transition:box-shadow .22s,transform .22s;
+}
+.mpx-creator:hover{box-shadow:var(--mpx-shadow);transform:translateY(-3px);}
+.mpx-creator__top{display:flex;align-items:center;gap:.8rem;}
+.mpx-creator__avatar{
+  width:52px;height:52px;border-radius:15px;flex-shrink:0;
+  display:grid;place-items:center;font-weight:900;color:#fff;font-size:1.05rem;
+  box-shadow:0 8px 18px -10px rgba(11,31,42,.7);
+}
+.mpx-creator__name{font-size:1rem;font-weight:800;}
+.mpx-creator__field{font-size:.76rem;color:var(--mpx-orange);font-weight:700;}
+.mpx-creator__bio{font-size:.84rem;color:var(--mpx-ink-soft);margin:.7rem 0 .8rem;min-height:2.8em;}
+.mpx-creator__nums{display:flex;gap:1.1rem;font-size:.78rem;color:var(--mpx-ink-soft);}
+.mpx-creator__nums b{color:var(--mpx-teal-deep);font-size:.92rem;display:block;line-height:1.2;}
+.mpx-creator__btn{
+  margin-top:.9rem;width:100%;padding:.45rem;border-radius:10px;
+  background:#eef6f9;color:var(--mpx-teal-deep);font-size:.82rem;font-weight:700;
+  transition:background .2s,color .2s;
+}
+.mpx-creator__btn:hover{background:var(--mpx-teal);color:#fff;}
+@media(max-width:960px){.mpx-creator-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.mpx-creator-grid{grid-template-columns:1fr;}}
+
+/* ===== 评价 ===== */
+.mpx-voices{background:linear-gradient(180deg,#0b1f2a,#123241);color:#d7eaf2;}
+.mpx-voices .mpx-h2{color:#fff;}
+.mpx-voices .mpx-kicker{color:var(--mpx-orange-soft);}
+.mpx-voices .mpx-kicker::before{background:var(--mpx-orange);}
+.mpx-voices .mpx-sub{color:#9dbeca;}
+.mpx-voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.mpx-voice{
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);
+  border-radius:14px;padding:1.1rem;
+  transition:background .22s,transform .22s;
+}
+.mpx-voice:hover{background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.mpx-voice__text{font-size:.87rem;color:#d5e9f0;line-height:1.7;}
+.mpx-voice__foot{display:flex;align-items:center;gap:.55rem;margin-top:.85rem;font-size:.78rem;color:#8eb4c2;}
+.mpx-voice__foot b{color:#fff;font-weight:700;}
+@media(max-width:960px){.mpx-voice-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.mpx-voice-grid{grid-template-columns:1fr;}}
+
+/* ===== 动态 + FAQ ===== */
+.mpx-duo{background:#fff;}
+.mpx-duo__grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem;align-items:start;}
+.mpx-timeline{position:relative;padding-left:1.4rem;}
+.mpx-timeline::before{
+  content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--mpx-teal),var(--mpx-orange));
+  border-radius:2px;
+}
+.mpx-timeline__item{position:relative;padding-bottom:1.25rem;}
+.mpx-timeline__item::before{
+  content:"";position:absolute;left:-1.4rem;top:.42rem;width:12px;height:12px;
+  border-radius:50%;background:#fff;border:2px solid var(--mpx-teal);
+}
+.mpx-timeline__date{font-size:.75rem;color:var(--mpx-orange);font-weight:700;letter-spacing:.04em;}
+.mpx-timeline__title{font-size:.96rem;font-weight:700;margin:.15rem 0 .2rem;}
+.mpx-timeline__desc{font-size:.83rem;color:var(--mpx-ink-soft);}
+.mpx-faq details{
+  border:1px solid var(--mpx-line);border-radius:12px;margin-bottom:.6rem;
+  background:#fafdfe;overflow:hidden;
+}
+.mpx-faq summary{
+  list-style:none;cursor:pointer;padding:.85rem 2.4rem .85rem 1rem;
+  font-size:.9rem;font-weight:700;position:relative;transition:color .2s;
+}
+.mpx-faq summary::-webkit-details-marker{display:none;}
+.mpx-faq summary::after{
+  content:"+";position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  font-size:1.15rem;color:var(--mpx-teal);font-weight:400;transition:transform .25s;
+}
+.mpx-faq details[open] summary{color:var(--mpx-teal-deep);}
+.mpx-faq details[open] summary::after{transform:translateY(-50%) rotate(45deg);color:var(--mpx-orange);}
+.mpx-faq p{padding:0 1rem .95rem;font-size:.85rem;color:var(--mpx-ink-soft);}
+@media(max-width:860px){.mpx-duo__grid{grid-template-columns:1fr;gap:2.2rem;}}
+
+/* ===== 联系 ===== */
+.mpx-contact{
+  background:
+    radial-gradient(600px 300px at 85% 10%,rgba(249,115,22,.16),transparent 60%),
+    linear-gradient(140deg,#0e7490,#0a5a70 70%);
+  color:#e3f3f8;
+}
+.mpx-contact .mpx-h2{color:#fff;}
+.mpx-contact .mpx-kicker{color:#ffd9bf;}
+.mpx-contact .mpx-kicker::before{background:#ffd9bf;}
+.mpx-contact__grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2.6rem;align-items:center;}
+.mpx-contact__list{display:grid;gap:.7rem;margin-top:1.2rem;font-size:.9rem;}
+.mpx-contact__list li{display:flex;gap:.6rem;align-items:flex-start;}
+.mpx-contact__list b{color:#fff;min-width:74px;display:inline-block;}
+.mpx-contact__form{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;padding:1.4rem;backdrop-filter:blur(6px);
+}
+.mpx-contact__form label{display:block;font-size:.8rem;margin-bottom:.35rem;color:#cfe9f1;}
+.mpx-contact__form input,.mpx-contact__form textarea{
+  width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.24);
+  background:rgba(255,255,255,.92);color:var(--mpx-ink);
+  padding:.55rem .7rem;font-size:.87rem;font-family:inherit;
+}
+.mpx-contact__form textarea{min-height:88px;resize:vertical;}
+.mpx-contact__form input:focus,.mpx-contact__form textarea:focus{
+  outline:2px solid #ffb27a;outline-offset:1px;
+}
+.mpx-contact__form .mpx-btn{margin-top:.9rem;width:100%;background:#fff;color:var(--mpx-teal-deep);}
+.mpx-contact__form .mpx-btn:hover{background:#ffe6d5;}
+@media(max-width:860px){.mpx-contact__grid{grid-template-columns:1fr;}}
+
+/* ===== 页脚 ===== */
+.mpx-footer{background:#08171f;color:#8fb2c0;font-size:.84rem;}
+.mpx-footer__inner{
+  max-width:1200px;margin:0 auto;padding:2.8rem 1.25rem 1.6rem;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;
+}
+.mpx-footer h4{color:#fff;font-size:.92rem;margin-bottom:.8rem;font-weight:700;}
+.mpx-footer a:hover{color:#fff;}
+.mpx-footer__links{display:grid;gap:.45rem;}
+.mpx-footer__brand p{margin:.6rem 0;line-height:1.8;font-size:.82rem;}
+.mpx-footer__bottom{
+  border-top:1px solid rgba(255,255,255,.09);
+  max-width:1200px;margin:0 auto;padding:1rem 1.25rem 1.6rem;
+  display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.78rem;color:#6f96a6;
+}
+.mpx-footer__bottom span{padding-right:1.4rem;}
+@media(max-width:860px){.mpx-footer__inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.mpx-footer__inner{grid-template-columns:1fr;}}
+
+/* ===== 回到顶部 & Toast ===== */
+.mpx-top{
+  position:fixed;right:1.1rem;bottom:1.4rem;width:44px;height:44px;
+  border-radius:13px;background:var(--mpx-teal);color:#fff;
+  display:grid;place-items:center;box-shadow:0 16px 28px -16px rgba(14,116,144,.95);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .25s;z-index:800;font-size:1rem;
+}
+.mpx-top.is-show{opacity:1;visibility:visible;transform:translateY(0);}
+.mpx-top:hover{background:var(--mpx-teal-deep);}
+.mpx-toast{
+  position:fixed;left:50%;bottom:2rem;transform:translate(-50%,20px);
+  background:#0b1f2a;color:#fff;font-size:.85rem;padding:.6rem 1.2rem;
+  border-radius:999px;box-shadow:0 18px 30px -14px rgba(0,0,0,.6);
+  opacity:0;visibility:hidden;transition:all .28s;z-index:1200;max-width:88vw;text-align:center;
+}
+.mpx-toast.is-show{opacity:1;visibility:visible;transform:translate(-50%,0);}
+
+/* ===== 弹窗 ===== */
+.mpx-modal{
+  position:fixed;inset:0;background:rgba(8,23,31,.58);
+  display:none;place-items:center;z-index:1100;padding:1.2rem;
+}
+.mpx-modal.is-open{display:grid;}
+.mpx-modal__box{
+  background:#fff;border-radius:18px;max-width:460px;width:100%;
+  padding:1.5rem;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  animation:mpxPop .24s ease;
+}
+@keyframes mpxPop{from{transform:scale(.94);opacity:0;}to{transform:scale(1);opacity:1;}}
+.mpx-modal__box h3{font-size:1.08rem;font-weight:800;margin-bottom:.5rem;}
+.mpx-modal__box p{font-size:.87rem;color:var(--mpx-ink-soft);margin-bottom:1rem;}
+.mpx-modal__row{display:flex;gap:.6rem;flex-wrap:wrap;}
+.mpx-modal__row .mpx-btn{flex:1;padding:.55rem 1rem;font-size:.85rem;}
+.mpx-modal__close{
+  margin-top:.8rem;width:100%;font-size:.82rem;color:var(--mpx-ink-soft);
+  padding:.4rem;border-radius:9px;background:#f0f7fa;
+}
+.mpx-modal__share{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:.4rem;}
+.mpx-modal__share button{
+  padding:.6rem;border-radius:10px;background:#f0f7fa;font-size:.85rem;font-weight:600;
+  transition:background .2s,color .2s;
+}
+.mpx-modal__share button:hover{background:var(--mpx-teal);color:#fff;}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶：公告条 + 页头 -->
+<div class="mpx-sticky-shell">
+  <div class="mpx-announce">
+    <div class="mpx-announce__inner">
+      <span class="mpx-announce__tag">官方发布</span>
+      <span class="mpx-announce__text">「混剪实验室 Vol.07 · 城市节奏」混剪企划已开启征稿，同步上线 12 支原创成片与剪辑拆解。</span>
+      <a class="mpx-announce__link" href="#mpx-topics">查看企划详情 →</a>
+    </div>
+  </div>
+
+  <header class="mpx-header">
+    <div class="mpx-header__inner">
+      <a class="mpx-logo" href="#mpx-hero" aria-label="混剪pmvyandex 官方网站首页">
+        <span class="mpx-logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4.5v15l13-7.5-13-7.5z"/></svg>
+        </span>
+        <span class="mpx-logo__text">
+          混剪pmvyandex
+          <small>OFFICIAL SITE</small>
+        </span>
+      </a>
+
+      <nav class="mpx-nav" id="mpxNav" aria-label="主导航">
+        <ul class="mpx-nav__list">
+          <li><a class="mpx-nav__link" href="#mpx-hero">首页</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-spotlight">焦点影像</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-videos">作品流</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-topics">专题企划</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-creators">创作者</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-updates">企业动态</a></li>
+          <li><a class="mpx-nav__link" href="#mpx-contact">联系投稿</a></li>
+        </ul>
+      </nav>
+
+      <div class="mpx-search">
+        <svg class="mpx-search__icon" viewBox="0 0 24 24" fill="none" stroke="#274454" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input class="mpx-search__input" id="mpxSearch" type="search" placeholder="搜索作品 / 创作者" aria-label="搜索作品或创作者" autocomplete="off">
+        <div class="mpx-search__hint" id="mpxSearchHint"></div>
+      </div>
+
+      <button class="mpx-burger" id="mpxBurger" aria-label="展开导航菜单" aria-expanded="false" aria-controls="mpxNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="mpx-hero" id="mpx-hero">
+  <div class="mpx-hero__inner">
+    <div class="mpx-hero__copy">
+      <span class="mpx-hero__badge"><i aria-hidden="true"></i>混剪pmvyandex 官方网站 · 品牌持续运营中</span>
+      <h1>混剪<em>pmvyandex</em></h1>
+      <p class="mpx-hero__lead">以剪辑重组影像秩序，让片段拥有叙事的力量。混剪pmvyandex 是一个专注二次创作表达的视频品牌平台，为创作者与企业搭建高品质、正版化的内容生态。</p>
+      <div class="mpx-hero__actions">
+        <a class="mpx-btn mpx-btn--primary" href="#mpx-videos">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5-13-7.5z"/></svg>
+          浏览精选作品
+        </a>
+        <a class="mpx-btn mpx-btn--ghost" href="#mpx-contact">我要投稿报名</a>
+      </div>
+      <div class="mpx-stats">
+        <div>
+          <div class="mpx-stats__num" data-mpx-count="18600">18,600<small>+</small></div>
+          <div class="mpx-stats__label">原创混剪作品</div>
+        </div>
+        <div>
+          <div class="mpx-stats__num" data-mpx-count="2400">2,400<small>+</small></div>
+          <div class="mpx-stats__label">签约创作者</div>
+        </div>
+        <div>
+          <div class="mpx-stats__num" data-mpx-count="38">38<small>期</small></div>
+          <div class="mpx-stats__label">主题企划已上线</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mpx-hero__visual">
+      <div class="mpx-hero__frame">
+        <svg viewBox="0 0 640 400" role="img" aria-label="混剪pmvyandex 品牌主视觉：多层时间线与剪辑节奏拼贴">
+          <defs>
+            <linearGradient id="mpxHeroBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0b1f2a"/><stop offset="1" stop-color="#0e7490"/>
+            </linearGradient>
+            <linearGradient id="mpxHeroWarm" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f97316"/><stop offset="1" stop-color="#fbbf24"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#mpxHeroBg)"/>
+          <g opacity=".28" stroke="#7fd6e8" stroke-width="1">
+            <path d="M0 80h640M0 160h640M0 240h640M0 320h640"/>
+            <path d="M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400"/>
+          </g>
+          <g>
+            <rect x="46" y="56" width="230" height="86" rx="10" fill="#123241" stroke="#2a5a6c"/>
+            <rect x="60" y="72" width="120" height="10" rx="5" fill="#3f8ea6"/>
+            <rect x="60" y="92" width="180" height="8" rx="4" fill="#24566a"/>
+            <rect x="60" y="110" width="150" height="8" rx="4" fill="#24566a"/>
+            <circle cx="248" cy="86" r="16" fill="url(#mpxHeroWarm)"/>
+            <path d="M243 79l12 7-12 7z" fill="#0b1f2a"/>
+          </g>
+          <g>
+            <rect x="300" y="70" width="290" height="132" rx="12" fill="#0f2f3d" stroke="#2a5a6c"/>
+            <rect x="316" y="86" width="258" height="76" rx="8" fill="#164a5c"/>
+            <path d="M330 148l34-30 28 24 36-38 30 30 34-22 28 36" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+            <rect x="316" y="172" width="150" height="8" rx="4" fill="#2f6f84"/>
+            <rect x="316" y="186" width="96" height="8" rx="4" fill="#2f6f84"/>
+          </g>
+          <g>
+            <rect x="46" y="188" width="180" height="150" rx="12" fill="#0f2f3d" stroke="#2a5a6c"/>
+            <circle cx="136" cy="248" r="34" fill="none" stroke="#7fd6e8" stroke-width="2" stroke-dasharray="6 8"/>
+            <path d="M126 232l26 16-26 16z" fill="#fbbf24"/>
+            <rect x="70" y="300" width="132" height="8" rx="4" fill="#2f6f84"/>
+            <rect x="70" y="316" width="90" height="8" rx="4" fill="#2f6f84"/>
+          </g>
+          <g>
+            <rect x="256" y="236" width="334" height="102" rx="12" fill="#123241" stroke="#2a5a6c"/>
+            <g fill="#3f8ea6">
+              <rect x="276" y="258" width="46" height="58" rx="5"/>
+              <rect x="334" y="258" width="46" height="58" rx="5"/>
+              <rect x="392" y="258" width="46" height="58" rx="5"/>
+              <rect x="450" y="258" width="46" height="58" rx="5"/>
+              <rect x="508" y="258" width="46" height="58" rx="5"/>
+            </g>
+            <rect x="276" y="322" width="278" height="6" rx="3" fill="url(#mpxHeroWarm)"/>
+            <circle cx="430" cy="325" r="7" fill="#fbbf24"/>
+          </g>
+          <g opacity=".9">
+            <rect x="46" y="356" width="88" height="20" rx="10" fill="url(#mpxHeroWarm)"/>
+            <text x="58" y="371" font-size="11" fill="#0b1f2a" font-family="sans-serif" font-weight="bold">ORIGINAL</text>
+          </g>
+        </svg>
+      </div>
+      <div class="mpx-hero__float">
+        <span class="mpx-hero__float-ic" aria-hidden="true">▶</span>
+        <div>
+          <b>本周新上线 26 支</b>
+          <span>均为官方审核的高清正版成片</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 品牌深度解析 -->
+<section class="mpx-section mpx-about" id="mpx-about">
+  <div class="mpx-wrap">
+    <div class="mpx-about__grid">
+      <aside class="mpx-about__panel">
+        <h3>混剪pmvyandex · 品牌档案</h3>
+        <p>一家把「剪辑」当作语言的视频品牌，坚持原创、正版与高清，用专业标准对待每一秒画面。</p>
+        <ul>
+          <li>深耕二次创作垂直领域</li>
+          <li>内容生态覆盖 12 个题材方向</li>
+          <li>创作者分级与版权保障机制</li>
+          <li>企业级影像定制与品牌联名</li>
+          <li>持续运营 7 年，用户口碑沉淀</li>
+        </ul>
+      </aside>
+      <div class="mpx-about__body">
+        <span class="mpx-kicker">About the Brand</span>
+        <h2 class="mpx-h2">关于混剪pmvyandex：让重组成为创作</h2>
+        <p><strong>混剪pmvyandex</strong> 是一个围绕「混剪」这一创作方式建立的视频品牌。我们相信，剪辑不只是把素材接在一起，而是一种可以独立成立的表达：一段旧有的影像，在重新排列、重新配乐、重新控制节奏之后，会生长出新的情绪与新的意义。品牌自成立之初就确立了三个原则——原创优先、正版授权、高清交付，这也构成了混剪pmvyandex 官方网站上所有内容的底层标准。</p>
+        <p>作为国内较早专注于混剪品类的内容平台，我们把「社区」和「企业」两种身份同时做好。一方面，混剪pmvyandex 为创作者提供稳定的发布空间、清晰的版权说明、可复用的素材授权指引，以及由资深剪辑师组成的评审机制；另一方面，我们也为品牌方、机构与制片团队提供从创意脚本到成片交付的完整影像服务，让企业的传播需求能够被更专业、更有质感地呈现。</p>
+        <p>平台目前覆盖日常记录、经验分享、教程干货、深度测评、人物访谈、城市探索、在地文化、生活方式、创作幕后、行业观察、情感故事、治愈影像等十二个题材方向。用户在首页看到的不只是推荐位上的几支作品，而是一整套持续运转的内容生态：有人负责拍，有人负责剪，有人负责把一段影像背后的故事讲清楚。我们希望每一次浏览都能带来新的灵感，而不是重复的刺激。</p>
+
+        <h3>混剪pmvyandex 的定位与解析</h3>
+        <p>如果把视频平台比作一座城市，那么混剪pmvyandex 更像是城市里的「后期街区」——这里的人不太在意镜头是否昂贵，而更在意节奏是否准确、情绪是否成立、结构是否自由。我们把这套气质明确为品牌定位：<strong>面向二次创作的专业视频社区与企业影像服务品牌</strong>。这一定位决定了平台的三层结构。</p>
+        <p>第一层是内容层。混剪pmvyandex 上的作品以「成片」为核心单位，每条作品都需附带素材来源说明与创作思路简述。我们鼓励创作者在发布时主动标注授权方式，平台则提供统一的授权模板与争议处理通道。这样做的好处是，浏览者能清楚知道自己在看什么，创作者也能在清晰的规则下安心创作。官方每月会整理一批「可授权素材清单」，帮助新手创作者降低入门门槛。</p>
+        <p>第二层是创作者层。混剪pmvyandex 采用分级机制，从「新锐剪辑者」到「签约创作者」再到「品牌合作导演」，每一级都有明确的成长路径与权益说明。平台不追求创作者数量的粗放增长，而更关注留存与口碑：一个稳定更新、结构完整、风格可辨认的创作者，比十个只发过一次作品的人更有价值。也正因如此，我们在首页为创作者设置了独立的展示矩阵，让「人」和「作品」同等重要。</p>
+        <p>第三层是企业层。混剪pmvyandex 的品牌客户涵盖消费电子、家居生活、文旅、汽车与本地生活服务等行业。我们提供的不是简单的素材拼贴，而是基于品牌调性的影像策略：先理解品牌的表达诉求，再决定叙事结构、节奏密度与视觉语言。过去几年里，多个企业年度影像、产品发布短片与城市宣传片由混剪pmvyandex 团队参与完成，这些项目也反过来滋养了平台的内容标准。</p>
+        <p>在技术层面，混剪pmvyandex 持续优化上传、转码与播放链路，保证高清成片在移动端也能稳定呈现；在社区层面，我们保留了评论、收藏、分享与投稿等基础互动，并定期组织主题企划与公开征集。我们始终认为，一个视频品牌的长期价值不来自短期的流量冲刺，而来自「值得信赖」四个字被一次次兑现：内容真实、授权清晰、交付准时、沟通顺畅。</p>
+        <p>如果你是一名剪辑爱好者，这里可以是你第一次被认真对待的地方；如果你是品牌方，这里可以是你找到合适影像表达方式的起点；如果你只是喜欢看片，这里会提供一份不喧哗、但有质感的片单。混剪pmvyandex 希望做的，是让「重组」这件事被更多人看见，也让每一次剪辑都拥有被尊重的理由。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 焦点影像 -->
+<section class="mpx-section mpx-spotlight" id="mpx-spotlight">
+  <div class="mpx-wrap">
+    <div class="mpx-sec-head">
+      <div>
+        <span class="mpx-kicker">Spotlight</span>
+        <h2 class="mpx-h2">焦点影像 · 本期重点推荐</h2>
+        <p class="mpx-sub">由官方编辑与创作者评审团共同选出的六支成片，覆盖城市、情绪与创作幕后三类表达。</p>
+      </div>
+      <a class="mpx-sec-head__more" href="#mpx-videos">全部作品 →</a>
+    </div>
+
+    <div class="mpx-spot-grid">
+      <article class="mpx-spot-main">
+        <div class="mpx-spot-main__cover">
+          <svg viewBox="0 0 720 405" role="img" aria-label="焦点作品封面：城市节奏 一分钟里的十二个路口">
+            <defs>
+              <linearGradient id="mpxSpotBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0a3a4a"/><stop offset="1" stop-color="#f97316"/>
+              </linearGradient>
+              <linearGradient id="mpxSpotMask" x1="0" y1="0" x2="0" y2="1">
+                <stop offset=".45" stop-color="rgba(8,23,31,0)"/><stop offset="1" stop-color="rgba(8,23,31,.85)"/>
+              </linearGradient>
+            </defs>
+            <rect width="720" height="405" fill="url(#mpxSpotBg)"/>
+            <g opacity=".55" fill="#0b1f2a">
+              <rect x="40" y="60" width="74" height="300" rx="6"/>
+              <rect x="132" y="120" width="64" height="240" rx="6"/>
+              <rect x="214" y="40" width="88" height="320" rx="6"/>
+              <rect x="320" y="150" width="58" height="210" rx="6"/>
+              <rect x="396" y="90" width="80" height="270" rx="6"/>
+              <rect x="494" y="170" width="62" height="190" rx="6"/>
+              <rect x="574" y="60" width="96" height="300" rx="6"/>
+            </g>
+            <g fill="#ffd9a8">
+              <rect x="52" y="76" width="8" height="8"/><rect x="72" y="76" width="8" height="8"/><rect x="92" y="96" width="8" height="8"/>
+              <rect x="230" y="60" width="8" height="8"/><rect x="252" y="86" width="8" height="8"/><rect x="274" y="60" width="8" height="8"/>
+              <rect x="410" y="110" width="8" height="8"/><rect x="434" y="140" width="8" height="8"/><rect x="456" y="110" width="8" height="8"/>
+              <rect x="592" y="84" width="8" height="8"/><rect x="616" y="112" width="8" height="8"/><rect x="640" y="84" width="8" height="8"/>
+            </g>
+            <path d="M0 330c120-40 200 10 320-20s240 6 400-26" fill="none" stroke="#ffe1b3" stroke-width="3" stroke-dasharray="14 10" opacity=".85"/>
+            <circle cx="360" cy="196" r="46" fill="rgba(255,255,255,.16)"/>
+            <path d="M348 172l38 24-38 24z" fill="#ffffff"/>
+            <rect width="720" height="405" fill="url(#mpxSpotMask)"/>
+            <g>
+              <rect x="26" y="26" width="86" height="26" rx="13" fill="#f97316"/>
+              <text x="40" y="44" font-size="13" fill="#fff" font-family="sans-serif" font-weight="bold">编辑推荐</text>
+            </g>
+          </svg>
+        </div>
+        <div class="mpx-spot-main__body">
+          <span class="mpx-spot-main__tag">城市探索 · 混剪企划</span>
+          <h3 class="mpx-spot-main__title">城市节奏：一分钟里的十二个路口</h3>
+          <p class="mpx-spot-main__desc">把十二段不同城市的通勤影像剪进同一条时间线，用红绿灯节拍重构「都市里的一天」。全程 4K 素材，配乐由创作者自行编排。</p>
+          <div class="mpx-spot-main__meta">
+            <span>创作者：林叙白</span><span>时长 03:42</span><span>授权：官方正版素材</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="mpx-spot-side">
+        <article class="mpx-spot-mini">
+          <div class="mpx-spot-mini__thumb">
+            <svg viewBox="0 0 260 160" role="img" aria-label="焦点作品封面：光线留白 极简影像里的呼吸感">
+              <defs><linearGradient id="mpxMiniA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f9fb"/><stop offset="1" stop-color="#bfe0ea"/></linearGradient></defs>
+              <rect width="260" height="160" fill="url(#mpxMiniA)"/>
+              <circle cx="196" cy="46" r="28" fill="#fbbf24" opacity=".85"/>
+              <rect x="28" y="96" width="150" height="10" rx="5" fill="#0e7490" opacity=".55"/>
+              <rect x="28" y="116" width="98" height="10" rx="5" fill="#0e7490" opacity=".35"/>
+              <path d="M0 150h260" stroke="#0e7490" stroke-width="2" opacity=".3"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mpx-spot-mini__title">光线留白：极简影像里的呼吸感</h4>
+            <p class="mpx-spot-mini__meta">艺术美学 · 02:58 · 顾清禾</p>
+          </div>
+        </article>
+        <article class="mpx-spot-mini">
+          <div class="mpx-spot-mini__thumb">
+            <svg viewBox="0 0 260 160" role="img" aria-label="焦点作品封面：一双手的十二道工序 手作幕后记录">
+              <defs><linearGradient id="mpxMiniB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8dccb"/><stop offset="1" stop-color="#c9a97a"/></linearGradient></defs>
+              <rect width="260" height="160" fill="url(#mpxMiniB)"/>
+              <circle cx="86" cy="84" r="38" fill="none" stroke="#6b4f2a" stroke-width="3" opacity=".55"/>
+              <circle cx="86" cy="84" r="18" fill="#8a6438" opacity=".7"/>
+              <rect x="146" y="52" width="88" height="10" rx="5" fill="#6b4f2a" opacity=".5"/>
+              <rect x="146" y="72" width="66" height="10" rx="5" fill="#6b4f2a" opacity=".38"/>
+              <rect x="146" y="92" width="78" height="10" rx="5" fill="#6b4f2a" opacity=".28"/>
+              <rect x="146" y="112" width="48" height="10" rx="5" fill="#6b4f2a" opacity=".22"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mpx-spot-mini__title">一双手的十二道工序：手作幕后记录</h4>
+            <p class="mpx-spot-mini__meta">创作幕后 · 06:14 · 阿木工坊</p>
+          </div>
+        </article>
+        <article class="mpx-spot-mini">
+          <div class="mpx-spot-mini__thumb">
+            <svg viewBox="0 0 260 160" role="img" aria-label="焦点作品封面：把情绪剪碎再拼回 音画同步实验">
+              <defs><linearGradient id="mpxMiniC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b1f4a"/><stop offset="1" stop-color="#a25b7a"/></linearGradient></defs>
+              <rect width="260" height="160" fill="url(#mpxMiniC)"/>
+              <g stroke="#ffd3b6" stroke-width="2" fill="none" opacity=".8">
+                <path d="M10 120c20-50 32 30 52-20s30 40 50-10 32 30 52-16 30 26 46-8"/>
+                <path d="M10 90c18 30 32-26 52 14s30-36 52 10 32-26 50 8 32-18 46 4"/>
+              </g>
+              <circle cx="60" cy="46" r="16" fill="#ffd3b6" opacity=".55"/>
+              <circle cx="204" cy="52" r="10" fill="#ffd3b6" opacity=".4"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mpx-spot-mini__title">把情绪剪碎再拼回：音画同步实验</h4>
+            <p class="mpx-spot-mini__meta">情感故事 · 04:21 · 江晚照</p>
+          </div>
+        </article>
+        <article class="mpx-spot-mini">
+          <div class="mpx-spot-mini__thumb">
+            <svg viewBox="0 0 260 160" role="img" aria-label="焦点作品封面：从三分钟到三十秒 剪辑节奏的取舍">
+              <defs><linearGradient id="mpxMiniD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e7490"/><stop offset="1" stop-color="#0b1f2a"/></linearGradient></defs>
+              <rect width="260" height="160" fill="url(#mpxMiniD)"/>
+              <g fill="#7fd6e8">
+                <rect x="22" y="96" width="14" height="40" rx="3"/>
+                <rect x="42" y="76" width="14" height="60" rx="3"/>
+                <rect x="62" y="106" width="14" height="30" rx="3"/>
+                <rect x="82" y="60" width="14" height="76" rx="3"/>
+                <rect x="102" y="90" width="14" height="46" rx="3"/>
+                <rect x="122" y="70" width="14" height="66" rx="3"/>
+                <rect x="142" y="100" width="14" height="36" rx="3"/>
+              </g>
+              <rect x="176" y="52" width="62" height="10" rx="5" fill="#f97316"/>
+              <rect x="176" y="72" width="46" height="10" rx="5" fill="#f97316" opacity=".7"/>
+              <rect x="176" y="92" width="56" height="10" rx="5" fill="#f97316" opacity=".45"/>
+              <rect x="176" y="112" width="34" height="10" rx="5" fill="#f97316" opacity=".3"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mpx-spot-mini__title">从三分钟到三十秒：剪辑节奏的取舍</h4>
+            <p class="mpx-spot-mini__meta">教程干货 · 08:05 · 周与野</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 作品流 -->
+<section class="mpx-section mpx-videos" id="mpx-videos">
+  <div class="mpx-wrap">
+    <div class="mpx-sec-head">
+      <div>
+        <span class="mpx-kicker">Community Feed</span>
+        <h2 class="mpx-h2">社区作品流 · 最近上新的混剪</h2>
+        <p class="mpx-sub">来自混剪pmvyandex 创作者社区的真实更新，支持收藏与点赞，欢迎在评论区留下你的剪辑观察。</p>
+      </div>
+    </div>
+
+    <div class="mpx-filter" role="group" aria-label="作品标签筛选">
+      <button class="mpx-chip is-active" data-mpx-filter="all">全部</button>
+      <button class="mpx-chip" data-mpx-filter="城市探索">城市探索</button>
+      <button class="mpx-chip" data-mpx-filter="教程干货">教程干货</button>
+      <button class="mpx-chip" data-mpx-filter="创作幕后">创作幕后</button>
+      <button class="mpx-chip" data-mpx-filter="情感故事">情感故事</button>
+      <button class="mpx-chip" data-mpx-filter="知识科普">知识科普</button>
+    </div>
+
+    <div class="mpx-vgrid" id="mpxVGrid">
+
+      <article class="mpx-card" data-mpx-tag="城市探索">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：雨夜便利店 城市灯光延时混剪">
+            <defs><linearGradient id="mpxCov1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a2533"/><stop offset="1" stop-color="#1c6a80"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov1)"/>
+            <g stroke="#7fd6e8" stroke-width="1.6" opacity=".55">
+              <path d="M60 0v225M120 0v225M180 0v225M240 0v225M300 0v225M360 0v225"/>
+              <path d="M0 70h400M0 130h400M0 190h400"/>
+            </g>
+            <rect x="252" y="86" width="110" height="86" rx="8" fill="#fbbf24" opacity=".88"/>
+            <rect x="266" y="100" width="36" height="58" rx="4" fill="#0a2533" opacity=".55"/>
+            <rect x="312" y="100" width="36" height="26" rx="4" fill="#0a2533" opacity=".55"/>
+            <circle cx="132" cy="150" r="24" fill="#7fd6e8" opacity=".35"/>
+            <path d="M20 200h360" stroke="#7fd6e8" stroke-width="3" opacity=".5"/>
+            <path d="M176 92l30 20-30 20z" fill="#ffffff" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">雨夜便利店：城市灯光延时混剪</h3>
+          <p class="mpx-card__desc">用一组雨夜实拍与延时素材，把便利店塑造成城市里的临时避风港。调色以青蓝为主，暖黄只留给橱窗。</p>
+          <div class="mpx-card__tags"><span>城市探索</span><span>延时摄影</span><span>调色</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#0e7490" aria-hidden="true">林</span>
+            <span>林叙白 · 3 小时前</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 雨夜便利店"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>328</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 雨夜便利店"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mpx-card" data-mpx-tag="教程干货">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：卡点剪辑五步法 新手也能上手的节奏课">
+            <defs><linearGradient id="mpxCov2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f9fb"/><stop offset="1" stop-color="#cfe8f0"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov2)"/>
+            <rect x="30" y="34" width="150" height="14" rx="7" fill="#0e7490"/>
+            <rect x="30" y="62" width="112" height="10" rx="5" fill="#0e7490" opacity=".55"/>
+            <g>
+              <rect x="30" y="112" width="46" height="80" rx="8" fill="#0e7490" opacity=".18"/>
+              <rect x="86" y="132" width="46" height="60" rx="8" fill="#0e7490" opacity=".32"/>
+              <rect x="142" y="96" width="46" height="96" rx="8" fill="#0e7490" opacity=".5"/>
+              <rect x="198" y="118" width="46" height="74" rx="8" fill="#0e7490" opacity=".68"/>
+              <rect x="254" y="82" width="46" height="110" rx="8" fill="#f97316" opacity=".85"/>
+            </g>
+            <circle cx="344" cy="60" r="22" fill="#f97316"/>
+            <text x="331" y="67" font-size="18" fill="#fff" font-family="sans-serif" font-weight="bold">5</text>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">卡点剪辑五步法：新手也能上手的节奏课</h3>
+          <p class="mpx-card__desc">从选乐、打标、粗剪到精修的完整流程演示，附一套可直接套用的时间线模板，适合刚接触混剪的创作者。</p>
+          <div class="mpx-card__tags"><span>教程干货</span><span>剪辑节奏</span><span>新手友好</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#f97316" aria-hidden="true">周</span>
+            <span>周与野 · 5 小时前</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 卡点剪辑五步法"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>512</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 卡点剪辑五步法"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mpx-card" data-mpx-tag="创作幕后">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：一条片子的四十八小时 幕后跟拍记录">
+            <defs><linearGradient id="mpxCov3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b2a1a"/><stop offset="1" stop-color="#c98b4b"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov3)"/>
+            <rect x="44" y="44" width="150" height="104" rx="10" fill="#1d140d" opacity=".6"/>
+            <circle cx="82" cy="86" r="18" fill="#ffd9a8" opacity=".85"/>
+            <circle cx="82" cy="86" r="8" fill="#1d140d"/>
+            <rect x="112" y="70" width="66" height="8" rx="4" fill="#ffd9a8" opacity=".7"/>
+            <rect x="112" y="88" width="46" height="8" rx="4" fill="#ffd9a8" opacity=".5"/>
+            <rect x="64" y="116" width="110" height="8" rx="4" fill="#ffd9a8" opacity=".35"/>
+            <g fill="#ffe9cd">
+              <rect x="232" y="58" width="128" height="10" rx="5"/>
+              <rect x="232" y="80" width="96" height="10" rx="5" opacity=".8"/>
+              <rect x="232" y="102" width="116" height="10" rx="5" opacity=".6"/>
+              <rect x="232" y="124" width="72" height="10" rx="5" opacity=".45"/>
+            </g>
+            <rect x="232" y="156" width="72" height="22" rx="11" fill="#ffd9a8"/>
+            <text x="246" y="171" font-size="11" fill="#3b2a1a" font-family="sans-serif" font-weight="bold">48H</text>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">一条片子的四十八小时：幕后跟拍记录</h3>
+          <p class="mpx-card__desc">从拿到素材到最终交付，两位剪辑师如何分工、如何在凌晨三点达成一致。片子之外的工作方式同样值得记录。</p>
+          <div class="mpx-card__tags"><span>创作幕后</span><span>团队协作</span><span>行业观察</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#c98b4b" aria-hidden="true">阿</span>
+            <span>阿木工坊 · 昨天</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 一条片子的四十八小时"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>276</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 一条片子的四十八小时"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mpx-card" data-mpx-tag="情感故事">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：旧磁带里的夏天 家庭影像重剪">
+            <defs><linearGradient id="mpxCov4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#42203a"/><stop offset="1" stop-color="#c06a7e"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov4)"/>
+            <rect x="60" y="62" width="280" height="104" rx="12" fill="#1f0f1c" opacity=".55"/>
+            <circle cx="122" cy="114" r="26" fill="none" stroke="#ffd3b6" stroke-width="3"/>
+            <circle cx="278" cy="114" r="26" fill="none" stroke="#ffd3b6" stroke-width="3"/>
+            <circle cx="122" cy="114" r="8" fill="#ffd3b6"/>
+            <circle cx="278" cy="114" r="8" fill="#ffd3b6"/>
+            <rect x="152" y="106" width="96" height="16" rx="8" fill="#ffd3b6" opacity=".35"/>
+            <g stroke="#ffd3b6" stroke-width="1.4" opacity=".45">
+              <path d="M20 200h360M20 184h360"/>
+            </g>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">旧磁带里的夏天：家庭影像重剪</h3>
+          <p class="mpx-card__desc">把二十年前的家庭录像带转成数字素材，重新配上一段钢琴。画面有噪点，但那种模糊反而更接近记忆本身。</p>
+          <div class="mpx-card__tags"><span>情感故事</span><span>家庭影像</span><span>治愈</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#c06a7e" aria-hidden="true">江</span>
+            <span>江晚照 · 昨天</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 旧磁带里的夏天"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>684</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 旧磁带里的夏天"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mpx-card" data-mpx-tag="知识科普">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：蒙太奇到底在做什么 三分钟讲清影像语法">
+            <defs><linearGradient id="mpxCov5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f3d34"/><stop offset="1" stop-color="#3fa07f"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov5)"/>
+            <g fill="none" stroke="#c8f5e2" stroke-width="2.4" opacity=".85">
+              <rect x="46" y="54" width="92" height="62" rx="8"/>
+              <rect x="154" y="54" width="92" height="62" rx="8"/>
+              <rect x="262" y="54" width="92" height="62" rx="8"/>
+            </g>
+            <path d="M46 140h308" stroke="#c8f5e2" stroke-width="2" opacity=".5"/>
+            <g fill="#c8f5e2">
+              <circle cx="76" cy="168" r="5"/><circle cx="128" cy="168" r="5"/><circle cx="180" cy="168" r="5"/>
+              <circle cx="232" cy="168" r="5"/><circle cx="284" cy="168" r="5"/><circle cx="336" cy="168" r="5"/>
+            </g>
+            <path d="M92 168h36M144 168h36M196 168h36M248 168h36M300 168h36" stroke="#c8f5e2" stroke-width="2" opacity=".7"/>
+            <circle cx="200" cy="85" r="18" fill="#fbbf24"/>
+            <path d="M194 78l12 7-12 7z" fill="#0f3d34"/>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">蒙太奇到底在做什么：三分钟讲清影像语法</h3>
+          <p class="mpx-card__desc">用六个经典片段拆解「库里肖夫效应」，解释为什么两个不相干的镜头放在一起会产生新的含义。</p>
+          <div class="mpx-card__tags"><span>知识科普</span><span>影像语法</span><span>蒙太奇</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#3fa07f" aria-hidden="true">许</span>
+            <span>许知微 · 2 天前</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 蒙太奇到底在做什么"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>431</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 蒙太奇到底在做什么"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mpx-card" data-mpx-tag="城市探索">
+        <div class="mpx-card__cover">
+          <svg viewBox="0 0 400 225" role="img" aria-label="作品封面：早市七点半 城市在地文化记录">
+            <defs><linearGradient id="mpxCov6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf3e3"/><stop offset="1" stop-color="#e7b97c"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#mpxCov6)"/>
+            <path d="M0 168h400v57H0z" fill="#b98650" opacity=".5"/>
+            <g>
+              <circle cx="80" cy="60" r="20" fill="#f97316" opacity=".9"/>
+              <rect x="52" y="92" width="56" height="46" rx="6" fill="#8a5a2b" opacity=".7"/>
+              <rect x="126" y="78" width="52" height="60" rx="6" fill="#a06a34" opacity=".75"/>
+              <rect x="196" y="96" width="58" height="42" rx="6" fill="#8a5a2b" opacity=".6"/>
+              <rect x="272" y="70" width="48" height="68" rx="6" fill="#a06a34" opacity=".8"/>
+            </g>
+            <path d="M28 168h344" stroke="#6b4423" stroke-width="3" opacity=".5"/>
+            <g fill="#6b4423" opacity=".55">
+              <circle cx="60" cy="196" r="8"/><circle cx="96" cy="196" r="8"/><circle cx="132" cy="196" r="8"/>
+              <circle cx="168" cy="196" r="8"/><circle cx="204" cy="196" r="8"/><circle cx="240" cy="196" r="8"/>
+            </g>
+            <path d="M330 30l16 26h-32z" fill="#f97316" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="mpx-card__body">
+          <h3 class="mpx-card__title">早市七点半：城市在地文化记录</h3>
+          <p class="mpx-card__desc">跟拍一位卖了十七年豆腐的摊主，从出摊到收摊，用固定机位与环境声记录一条街的清晨。</p>
+          <div class="mpx-card__tags"><span>城市探索</span><span>在地文化</span><span>纪实</span></div>
+          <div class="mpx-card__foot">
+            <span class="mpx-avatar" style="background:#b98650" aria-hidden="true">沈</span>
+            <span>沈屿 · 3 天前</span>
+            <span class="mpx-card__actions">
+              <button class="mpx-icon-btn" data-mpx-like aria-label="点赞 早市七点半"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9A5.3 5.3 0 0112 5.4 5.3 5.3 0 0121.4 12c-1.9 4.4-9.4 9-9.4 9z"/></svg><b>198</b></button>
+              <button class="mpx-icon-btn" data-mpx-save aria-label="收藏 早市七点半"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.2L6 21z"/></svg><b>收藏</b></button>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 专题企划 -->
+<section class="mpx-section mpx-topics" id="mpx-topics">
+  <div class="mpx-wrap">
+    <div class="mpx-sec-head">
+      <div>
+        <span class="mpx-kicker">Special Projects</span>
+        <h2 class="mpx-h2">专题企划 · 正在进行中的创作挑战</h2>
+        <p class="mpx-sub">混剪pmvyandex 每季推出主题企划，开放征稿、公开投票，优秀作品将进入官方片单并获得品牌合作推荐。</p>
+      </div>
+    </div>
+
+    <div class="mpx-topic-grid">
+      <article class="mpx-topic mpx-topic--wide">
+        <div class="mpx-topic__bg">
+          <svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="专题封面：城市节奏 混剪实验室第七期">
+            <defs><linearGradient id="mpxTp1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1f2a"/><stop offset="1" stop-color="#0e7490"/></linearGradient></defs>
+            <rect width="800" height="300" fill="url(#mpxTp1)"/>
+            <g stroke="#7fd6e8" stroke-width="1.4" opacity=".4">
+              <path d="M0 60h800M0 120h800M0 180h800M0 240h800"/>
+              <path d="M100 0v300M220 0v300M340 0v300M460 0v300M580 0v300M700 0v300"/>
+            </g>
+            <g fill="#f97316" opacity=".85">
+              <rect x="120" y="180" width="18" height="70" rx="4"/>
+              <rect x="156" y="140" width="18" height="110" rx="4"/>
+              <rect x="192" y="200" width="18" height="50" rx="4"/>
+              <rect x="228" y="110" width="18" height="140" rx="4"/>
+            </g>
+            <circle cx="620" cy="120" r="54" fill="none" stroke="#ffd9a8" stroke-width="2" stroke-dasharray="8 10"/>
+            <path d="M600 100l36 20-36 20z" fill="#ffd9a8"/>
+          </svg>
+        </div>
+        <div class="mpx-topic__inner">
+          <span class="mpx-topic__state">征稿中 · 剩余 12 天</span>
+          <h3>城市节奏 · 混剪实验室 Vol.07</h3>
+          <p>以「城市的一天」为题，用不少于 8 段素材完成一支 60–180 秒的混剪，鼓励使用环境声与长镜头。</p>
+        </div>
+      </article>
+
+      <article class="mpx-topic">
+        <div class="mpx-topic__bg">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="专题封面：一镜到底 长镜头挑战赛">
+            <defs><linearGradient id="mpxTp2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b2a1a"/><stop offset="1" stop-color="#d99a4e"/></linearGradient></defs>
+            <rect width="400" height="300" fill="url(#mpxTp2)"/>
+            <path d="M30 240c60-120 120 20 180-90s100 30 160-70" fill="none" stroke="#ffe9cd" stroke-width="3" opacity=".8"/>
+            <circle cx="120" cy="140" r="16" fill="#ffe9cd" opacity=".85"/>
+            <circle cx="300" cy="90" r="10" fill="#ffe9cd" opacity=".6"/>
+            <rect x="24" y="24" width="96" height="24" rx="12" fill="#1d140d" opacity=".5"/>
+            <text x="40" y="41" font-size="12" fill="#ffe9cd" font-family="sans-serif">LONG TAKE</text>
+          </svg>
+        </div>
+        <div class="mpx-topic__inner">
+          <span class="mpx-topic__state">投票中</span>
+          <h3>一镜到底 · 长镜头挑战赛</h3>
+          <p>不切镜头完成 45 秒叙事，考验调度与节奏控制。</p>
+        </div>
+      </article>
+
+      <article class="mpx-topic">
+        <div class="mpx-topic__bg">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="专题封面：旧影像新生 老素材重剪计划">
+            <defs><linearGradient id="mpxTp3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2f4a"/><stop offset="1" stop-color="#8a7fb8"/></linearGradient></defs>
+            <rect width="400" height="300" fill="url(#mpxTp3)"/>
+            <rect x="52" y="76" width="140" height="96" rx="8" fill="#1a1d30" opacity=".6" stroke="#cfc4f0" stroke-width="2"/>
+            <rect x="212" y="110" width="140" height="96" rx="8" fill="#1a1d30" opacity=".5" stroke="#cfc4f0" stroke-width="2"/>
+            <path d="M192 128l16 12-16 12z" fill="#cfc4f0"/>
+            <g stroke="#cfc4f0" stroke-width="1.4" opacity=".5"><path d="M0 240h400M0 262h400"/></g>
+          </svg>
+        </div>
+        <div class="mpx-topic__inner">
+          <span class="mpx-topic__state">资料开放下载</span>
+          <h3>旧影像新生 · 老素材重剪计划</h3>
+          <p>官方开放 40 段授权老素材，重新讲一个新故事。</p>
+        </div>
+      </article>
+
+      <article class="mpx-topic">
+        <div class="mpx-topic__bg">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="专题封面：声音先行 环境声混剪实验">
+            <defs><linearGradient id="mpxTp4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f3d34"/><stop offset="1" stop-color="#57c9a5"/></linearGradient></defs>
+            <rect width="400" height="300" fill="url(#mpxTp4)"/>
+            <g fill="none" stroke="#d7fff0" stroke-width="2.4" opacity=".85">
+              <path d="M40 170c14-40 22 40 36 0s22 40 36 0 22 40 36 0 22 40 36 0 22 40 36 0 22 40 36 0 22 40 36 0 22 40 36 0"/>
+            </g>
+            <circle cx="200" cy="80" r="26" fill="#d7fff0" opacity=".35"/>
+          </svg>
+        </div>
+        <div class="mpx-topic__inner">
+          <span class="mpx-topic__state">即将截止</span>
+          <h3>声音先行 · 环境声混剪实验</h3>
+          <p>先有声音，再找画面，探索听觉驱动的剪辑逻辑。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 创作者矩阵 -->
+<section class="mpx-section mpx-creators" id="mpx-creators">
+  <div class="mpx-wrap">
+    <div class="mpx-sec-head">
+      <div>
+        <span class="mpx-kicker">Creators</span>
+        <h2 class="mpx-h2">创作者矩阵 · 长期一起做内容的人</h2>
+        <p class="mpx-sub">混剪pmvyandex 的企业与社区身份，靠这些稳定更新的创作者共同支撑。点击「查看主页」可了解他们的作品与合作方式。</p>
+      </div>
+    </div>
+
+    <div class="mpx-creator-grid">
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#0e7490,#0b1f2a)" aria-hidden="true">林</span>
+          <div>
+            <div class="mpx-creator__name">林叙白</div>
+            <div class="mpx-creator__field">城市探索 · 节奏剪辑</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">擅长把城市实拍剪成有呼吸感的时间线，偏爱环境声与长焦。签约三年，作品多次进入官方推荐位。</p>
+        <div class="mpx-creator__nums">
+          <div><b>128</b>作品</div>
+          <div><b>46.2万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="林叙白|城市探索 · 节奏剪辑|128 支作品，46.2 万粉丝。签约创作者，擅长城市实拍与节奏剪辑，代表企划《城市节奏》系列。">查看主页</button>
+      </article>
+
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#f97316,#fbbf24)" aria-hidden="true">周</span>
+          <div>
+            <div class="mpx-creator__name">周与野</div>
+            <div class="mpx-creator__field">教程干货 · 剪辑教学</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">职业剪辑师，做混剪教学六年。讲解风格清晰直接，课程模板被大量新手创作者复用。</p>
+        <div class="mpx-creator__nums">
+          <div><b>216</b>作品</div>
+          <div><b>89.5万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="周与野|教程干货 · 剪辑教学|216 支作品，89.5 万粉丝。职业剪辑师，长期输出卡点、转场与叙事结构类教程。">查看主页</button>
+      </article>
+
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#c98b4b,#8a5a2b)" aria-hidden="true">阿</span>
+          <div>
+            <div class="mpx-creator__name">阿木工坊</div>
+            <div class="mpx-creator__field">创作幕后 · 手作记录</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">四人小型影像团队，专注手工艺与产品幕后。喜欢把工序拍成节奏，把工具声当配乐。</p>
+        <div class="mpx-creator__nums">
+          <div><b>74</b>作品</div>
+          <div><b>21.8万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="阿木工坊|创作幕后 · 手作记录|74 支作品，21.8 万粉丝。团队型创作者，长期记录手作工序与产品拍摄现场。">查看主页</button>
+      </article>
+
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#c06a7e,#42203a)" aria-hidden="true">江</span>
+          <div>
+            <div class="mpx-creator__name">江晚照</div>
+            <div class="mpx-creator__field">情感故事 · 治愈影像</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">用旧素材与家庭影像讲普通人的故事，节奏舒缓，配乐克制。她说剪辑是「把没说出口的话补上」。</p>
+        <div class="mpx-creator__nums">
+          <div><b>96</b>作品</div>
+          <div><b>52.3万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="江晚照|情感故事 · 治愈影像|96 支作品，52.3 万粉丝。擅长家庭影像重剪与情绪向叙事，作品以克制、温暖著称。">查看主页</button>
+      </article>
+
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#3fa07f,#0f3d34)" aria-hidden="true">许</span>
+          <div>
+            <div class="mpx-creator__name">许知微</div>
+            <div class="mpx-creator__field">知识科普 · 影像语法</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">影视专业背景，擅长把理论讲成可操作的方法。内容严谨，画面干净，是平台口碑最好的科普作者之一。</p>
+        <div class="mpx-creator__nums">
+          <div><b>88</b>作品</div>
+          <div><b>37.6万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="许知微|知识科普 · 影像语法|88 支作品，37.6 万粉丝。专注影像语法与经典片段拆解，内容常被高校课程引用。">查看主页</button>
+      </article>
+
+      <article class="mpx-creator">
+        <div class="mpx-creator__top">
+          <span class="mpx-creator__avatar" style="background:linear-gradient(135deg,#b98650,#6b4423)" aria-hidden="true">沈</span>
+          <div>
+            <div class="mpx-creator__name">沈屿</div>
+            <div class="mpx-creator__field">城市探索 · 在地文化</div>
+          </div>
+        </div>
+        <p class="mpx-creator__bio">纪录片式创作者，长期拍摄市集、街巷与老手艺。画面朴实，叙事耐心，是平台「真实」气质的代表。</p>
+        <div class="mpx-creator__nums">
+          <div><b>63</b>作品</div>
+          <div><b>18.9万</b>粉丝</div>
+        </div>
+        <button class="mpx-creator__btn" data-mpx-author="沈屿|城市探索 · 在地文化|63 支作品，18.9 万粉丝。纪录片式拍摄者，长期记录市集、街巷与老手艺人的日常。">查看主页</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 用户评价 -->
+<section class="mpx-section mpx-voices" id="mpx-voices">
+  <div class="mpx-wrap">
+    <div class="mpx-sec-head">
+      <div>
+        <span class="mpx-kicker">Voices</span>
+        <h2 class="mpx-h2">来自用户与合作伙伴的真实反馈</h2>
+        <p class="mpx-sub">口碑来自持续运营中的每一次交付。以下评价来自社区用户、创作者与企业合作方。</p>
+      </div>
+    </div>
+
+    <div class="mpx-voice-grid">
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「第一次在混剪pmvyandex 投稿时，编辑回复了我三段意见，具体到第几秒的转场。那种被认真对待的感觉，让我决定一直留在这里。」</p>
+        <div class="mpx-voice__foot"><b>@一线剪辑工</b> · 新锐创作者</div>
+      </div>
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「素材授权说明写得很清楚，这一点对我们这种小团队太重要了。不用反复确认版权，创作时心里踏实很多。」</p>
+        <div class="mpx-voice__foot"><b>@木木影像</b> · 三人团队</div>
+      </div>
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「我们品牌年度短片交给他们做，从脚本到成片只开了三次会，交付时间比预期早两天。画面质感在线，沟通也很省心。」</p>
+        <div class="mpx-voice__foot"><b>某消费电子品牌市场部</b> · 企业合作方</div>
+      </div>
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「首页推荐不吵闹，片单有辨识度。晚上回家看两条，比刷短视频更放松，看完还能顺手收藏一些剪辑思路。」</p>
+        <div class="mpx-voice__foot"><b>@阿澄</b> · 注册用户 3 年</div>
+      </div>
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「作为影视专业学生，这里是我找到最多结构清晰、愿意讲方法的教程的地方。视频下方还会附时间线截图，很实用。」</p>
+        <div class="mpx-voice__foot"><b>@半格胶片</b> · 在校学生</div>
+      </div>
+      <div class="mpx-voice">
+        <p class="mpx-voice__text">「专题企划的开放素材帮了大忙，省掉一大笔采购成本，最后还在投票里拿到第三名。这种机制对新人很友好。」</p>
+        <div class="mpx-voice__foot"><b>@南风不知</b> · 社区创作者</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 动态 + FAQ -->
+<section class="mpx-section mpx-duo" id="mpx-updates">
+  <div class="mpx-wrap">
+    <div class="mpx-duo__grid">
+      <div>
+        <span class="mpx-kicker">Updates</span>
+        <h2 class="mpx-h2">企业动态与内容更新</h2>
+        <p class="mpx-sub" style="margin-bottom:1.6rem;">官方发布的产品、内容与社区规则变化，按时间倒序记录，便于创作者与企业合作方查阅。</p>
+
+        <div class="mpx-timeline">
+          <div class="mpx-timeline__item">
+            <div class="mpx-timeline__date">2026年11月18日</div>
+            <div class="mpx-timeline__title">「城市节奏」主题企划 Vol.07 正式开启</div>
+            <p class="mpx-timeline__desc">本次企划开放征稿至 12 月 1 日，同步上线 12 支官方示范成片与配套剪辑拆解，创作者可在专题页报名上传。</p>
+          </div>
+          <div class="mpx-timeline__item">
+            <div class="mpx-timeline__date">2026年11月12日</div>
+            <div class="mpx-timeline__title">素材授权中心升级，新增可用清单下载</div>
+            <p class="mpx-timeline__desc">首批整理 420 段可授权素材，覆盖城市、自然与生活场景，支持一键下载与授权说明查询。</p>
+          </div>
+          <div class="mpx-timeline__item">
+            <div class="mpx-timeline__date">2026年11月5日</div>
+            <div class="mpx-timeline__title">企业影像服务页面改版，合作流程更透明</div>
+            <p class="mpx-timeline__desc">新增项目周期说明、交付标准与过往案例索引，品牌方可直接提交需求简报，由专属顾问对接。</p>
+          </div>
+          <div class="mpx-timeline__item">
+            <div class="mpx-timeline__date">2026年10月28日</div>
+            <div class="mpx-timeline__title">社区公约更新，明确二次创作标注规范</div>
+            <p class="mpx-timeline__desc">发布作品时需注明素材来源与授权方式，平台同步提供标注模板，鼓励原创、尊重版权。</p>
+          </div>
+          <div class="mpx-timeline__item">
+            <div class="mpx-timeline__date">2026年10月16日</div>
+            <div class="mpx-timeline__title">首页播放链路优化，高清成片加载更稳定</div>
+            <p class="mpx-timeline__desc">针对移动端网络环境调整转码策略，弱网条件下的首帧速度与流畅度均有提升。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mpx-faq">
+        <span class="mpx-kicker">FAQ</span>
+        <h2 class="mpx-h2">常见问题</h2>
+        <p class="mpx-sub" style="margin-bottom:1.4rem;">关于投稿、授权、合作与账号的常见疑问，点击展开查看。</p>
+
+        <details open>
+          <summary>如何向混剪pmvyandex 投稿？</summary>
+          <p>可在「联系投稿」区提交作品链接与创作说明，也可在专题企划页直接报名上传。官方会在 3 个工作日内给出初审反馈，通过后作品将进入社区作品流。</p>
+        </details>
+        <details>
+          <summary>平台对素材授权有什么要求？</summary>
+          <p>发布作品时必须注明素材来源与授权方式。使用官方素材中心的素材可直接选择对应授权编号；使用自采素材需确认拍摄与使用权限。未注明来源的作品将暂不上架。</p>
+        </details>
+        <details>
+          <summary>企业合作可以定制影像内容吗？</summary>
+          <p>可以。混剪pmvyandex 提供从创意脚本、拍摄、剪辑到交付的完整服务，支持品牌短片、产品影像与城市宣传片等类型，具体周期与报价根据项目规模评估。</p>
+        </details>
+        <details>
+          <summary>成为签约创作者需要什么条件？</summary>
+          <p>通常需要稳定更新 6 个月以上、作品结构完整、无版权争议，并通过评审团的成片评估。签约后可获得流量支持、素材授权与商业合作推荐。</p>
+        </details>
+        <details>
+          <summary>作品被误判或遇到版权争议怎么办？</summary>
+          <p>可在作品页提交申诉并补充授权材料，平台设有专门的争议处理通道，一般在 5 个工作日内反馈处理结果。</p>
+        </details>
+        <details>
+          <summary>是否支持作品高清下载？</summary>
+          <p>创作者可在个人中心下载自己的原始成片；企业合作项目的交付文件按合同约定提供。平台尊重每一份素材的授权边界。</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系与投稿 -->
+<section class="mpx-section mpx-contact" id="mpx-contact">
+  <div class="mpx-wrap">
+    <div class="mpx-contact__grid">
+      <div>
+        <span class="mpx-kicker">Contact</span>
+        <h2 class="mpx-h2">联系我们，或把你的作品交给这里</h2>
+        <p style="color:#cfeaf2;font-size:.95rem;max-width:520px;">无论是投稿、合作、还是对平台规则有疑问，都欢迎直接联系。混剪pmvyandex 官方网站由品牌团队持续运营，所有来信都会有人阅读。</p>
+        <ul class="mpx-contact__list">
+          <li><b>合作邮箱</b><span>brand@pmvyandex.studio</span></li>
+          <li><b>投稿通道</b><span>submit@pmvyandex.studio（附作品链接与创作说明）</span></li>
+          <li><b>办公地址</b><span>城市影像园区 B 座 3 层 · 混剪pmvyandex 品牌中心</span></li>
+          <li><b>工作时间</b><span>周一至周五 10:00–19:00，节假日顺延</span></li>
+        </ul>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.3rem;">
+          <button class="mpx-btn" style="background:#fff;color:#0a5a70;" data-mpx-share>分享本页</button>
+          <button class="mpx-btn" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);" data-mpx-report>问题反馈</button>
+        </div>
+      </div>
+
+      <form class="mpx-contact__form" id="mpxContactForm" novalidate>
+        <div style="margin-bottom:.8rem;">
+          <label for="mpxName">称呼</label>
+          <input id="mpxName" name="name" type="text" placeholder="怎么称呼你" required>
+        </div>
+        <div style="margin-bottom:.8rem;">
+          <label for="mpxWay">联系方式</label>
+          <input id="mpxWay" name="contact" type="text" placeholder="邮箱或社交账号" required>
+        </div>
+        <div>
+          <label for="mpxMsg">想说的话</label>
+          <textarea id="mpxMsg" name="message" placeholder="作品链接、合作意向或具体问题" required></textarea>
+        </div>
+        <button class="mpx-btn" type="submit">提交信息</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="mpx-footer">
+  <div class="mpx-footer__inner">
+    <div class="mpx-footer__brand">
+      <a class="mpx-logo" href="#mpx-hero" style="color:#fff;" aria-label="混剪pmvyandex 官方网站">
+        <span class="mpx-logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4.5v15l13-7.5-13-7.5z"/></svg>
+        </span>
+        <span class="mpx-logo__text">混剪pmvyandex<small style="color:#7fd6e8;">OFFICIAL SITE</small></span>
+      </a>
+      <p>混剪pmvyandex 官方网站 · 专注二次创作的视频品牌平台。坚持原创、正版、高清，为创作者与企业提供值得信赖的内容生态。</p>
+      <p style="color:#6f96a6;font-size:.78rem;">持续运营中 · 官方发布 · 品牌直营</p>
+    </div>
+    <div>
+      <h4>内容</h4>
+      <div class="mpx-footer__links">
+        <a href="#mpx-spotlight">焦点影像</a>
+        <a href="#mpx-videos">社区作品流</a>
+        <a href="#mpx-topics">专题企划</a>
+        <a href="#mpx-about">品牌深度解析</a>
+      </div>
+    </div>
+    <div>
+      <h4>社区</h4>
+      <div class="mpx-footer__links">
+        <a href="#mpx-creators">创作者矩阵</a>
+        <a href="#mpx-voices">用户评价</a>
+        <a href="#mpx-updates">企业动态</a>
+        <a href="#mpx-contact">投稿与报名</a>
+      </div>
+    </div>
+    <div>
+      <h4>关于</h4>
+      <div class="mpx-footer__links">
+        <a href="#mpx-about">品牌故事</a>
+        <a href="#mpx-updates">常见问题</a>
+        <a href="#mpx-contact">合作联系</a>
+        <a href="#mpx-hero">返回首页</a>
+      </div>
+    </div>
+  </div>
+  <div class="mpx-footer__bottom">
+    <span>© 2026 混剪pmvyandex 官方网站 版权所有</span>
+    <span>品牌备案号：影像文创备 2026-11-0186 号</span>
+    <span>内容授权与版权说明以页面公示为准</span>
+    <span>企业动态 · 官方发布 · 持续运营</span>
+  </div>
+</footer>
+
+<button class="mpx-top" id="mpxTop" aria-label="回到页面顶部">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="mpx-toast" id="mpxToast" role="status" aria-live="polite"></div>
+
+<!-- 通用弹窗 -->
+<div class="mpx-modal" id="mpxModal" role="dialog" aria-modal="true" aria-labelledby="mpxModalTitle">
+  <div class="mpx-modal__box">
+    <h3 id="mpxModalTitle">提示</h3>
+    <div id="mpxModalBody"></div>
+    <button class="mpx-modal__close" id="mpxModalClose">关闭</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 移动端导航 ---------- */
+  var burger = document.getElementById('mpxBurger');
+  var nav = document.getElementById('mpxNav');
+  if(burger && nav){
+    burger.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.closest('a')){
+        nav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById('mpxToast');
+  var toastTimer = null;
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){
+      toast.classList.remove('is-show');
+    }, 2200);
+  }
+
+  /* ---------- 弹窗 ---------- */
+  var modal = document.getElementById('mpxModal');
+  var modalTitle = document.getElementById('mpxModalTitle');
+  var modalBody = document.getElementById('mpxModalBody');
+  var modalClose = document.getElementById('mpxModalClose');
+
+  function openModal(title, html){
+    if(!modal) return;
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    if(!modal) return;
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  if(modalClose) modalClose.addEventListener('click', closeModal);
+  if(modal) modal.addEventListener('click', function(e){
+    if(e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+
+  /* ---------- 搜索反馈 ---------- */
+  var searchInput = document.getElementById('mpxSearch');
+  var searchHint = document.getElementById('mpxSearchHint');
+  var searchPool = [
+    '城市节奏 · 混剪实验室 Vol.07',
+    '卡点剪辑五步法 · 周与野',
+    '雨夜便利店 · 林叙白',
+    '旧磁带里的夏天 · 江晚照',
+    '蒙太奇到底在做什么 · 许知微',
+    '一双手的十二道工序 · 阿木工坊',
+    '早市七点半 · 沈屿',
+    '光线留白 · 顾清禾'
+  ];
+  if(searchInput && searchHint){
+    searchInput.addEventListener('input', function(){
+      var kw = searchInput.value.trim();
+      if(!kw){
+        searchHint.classList.remove('is-show');
+        searchHint.innerHTML = '';
+        return;
+      }
+      var hits = searchPool.filter(function(item){
+        return item.toLowerCase().indexOf(kw.toLowerCase()) !== -1;
+      });
+      if(hits.length){
+        searchHint.innerHTML = '找到 ' + hits.length + ' 条相关内容：<br><b>' + hits[0] + '</b>';
+      }else{
+        searchHint.innerHTML = '暂未找到与「' + kw + '」直接相关的内容，试试「城市」「剪辑」「幕后」。';
+      }
+      searchHint.classList.add('is-show');
+    });
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        var kw = searchInput.value.trim();
+        showToast(kw ? ('已为你记录搜索：' + kw) : '请输入搜索关键词');
+        searchHint.classList.remove('is-show');
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.mpx-search')){
+        searchHint.classList.remove('is-show');
+      }
+    });
+  }
+
+  /* ---------- 点赞 / 收藏 ---------- */
+  document.addEventListener('click', function(e){
+    var likeBtn = e.target.closest('[data-mpx-like]');
+    if(likeBtn){
+      var numEl = likeBtn.querySelector('b');
+      var n = parseInt(numEl.textContent, 10) || 0;
+      var active = likeBtn.classList.toggle('is-liked');
+      numEl.textContent = active ? (n + 1) : Math.max(0, n - 1);
+      showToast(active ? '已点赞，感谢你的认可' : '已取消点赞');
+      return;
+    }
+    var saveBtn = e.target.closest('[data-mpx-save]');
+    if(saveBtn){
+      var label = saveBtn.querySelector('b');
+      var saved = saveBtn.classList.toggle('is-saved');
+      label.textContent = saved ? '已收藏' : '收藏';
+      showToast(saved ? '已加入收藏，可在个人中心查看' : '已取消收藏');
+      return;
+    }
+  });
+
+  /* ---------- 标签筛选 ---------- */
+  var chips = document.querySelectorAll('[data-mpx-filter]');
+  var cards = document.querySelectorAll('#mpxVGrid .mpx-card');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      var tag = chip.getAttribute('data-mpx-filter');
+      var shown = 0;
+      cards.forEach(function(card){
+        var match = (tag === 'all') || (card.getAttribute('data-mpx-tag') === tag);
+        card.style.display = match ? '' : 'none';
+        if(match) shown++;
+      });
+      showToast(tag === 'all' ? ('共 ' + shown + ' 支作品') : ('「' + tag + '」共 ' + shown + ' 支作品'));
+    });
+  });
+
+  /* ---------- 创作者弹窗 ---------- */
+  document.addEventListener('click', function(e){
+    var authorBtn = e.target.closest('[data-mpx-author]');
+    if(authorBtn){
+      var parts = authorBtn.getAttribute('data-mpx-author').split('|');
+      openModal(parts[0] + ' · 创作者档案',
+        '<p style="font-weight:700;color:#0e7490;margin-bottom:.3rem;">' + parts[1] + '</p>' +
+        '<p>' + parts[2] + '</p>' +
+        '<p style="font-size:.82rem;color:#274454;">可通过「联系投稿」提交合作意向，官方将转达给创作者本人。</p>' +
+        '<div class="mpx-modal__row"><button class="mpx-btn mpx-btn--primary" data-mpx-share>分享该创作者</button></div>'
+      );
+    }
+  });
+
+  /* ---------- 分享 ---------- */
+  function doShare(){
+    var url = location.href.split('#')[0];
+    var title = document.title;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('链接已复制，欢迎分享给同好');
+      }).catch(function(){
+        showToast('分享方式：' + title);
+      });
+    }else if(navigator.share){
+      navigator.share({title:title, url:url}).catch(function(){});
+    }else{
+      showToast('分享方式：' + title);
+    }
+  }
+  document.addEventListener('click', function(e){
+    if(e.target.closest('[data-mpx-share]')){
+      doShare();
+    }
+    if(e.target.closest('[data-mpx-report]')){
+      openModal('问题反馈',
+        '<p>告诉我们你遇到的问题，平台会在 1–2 个工作日内核查处理。</p>' +
+        '<div class="mpx-modal__share">' +
+          '<button data-mpx-report-type="内容问题">内容问题</button>' +
+          '<button data-mpx-report-type="版权争议">版权争议</button>' +
+          '<button data-mpx-report-type="功能异常">功能异常</button>' +
+          '<button data-mpx-report-type="合作咨询">合作咨询</button>' +
+        '</div>' +
+        '<p style="font-size:.8rem;">也可直接发送邮件至 brand@pmvyandex.studio。</p>'
+      );
+    }
+    var typeBtn = e.target.closest('[data-mpx-report-type]');
+    if(typeBtn){
+      closeModal();
+      showToast('已提交反馈：' + typeBtn.getAttribute('data-mpx-report-type'));
+    }
+  });
+
+  /* ---------- 联系表单 ---------- */
+  var form = document.getElementById('mpxContactForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('mpxName').value.trim();
+      var way = document.getElementById('mpxWay').value.trim();
+      var msg = document.getElementById('mpxMsg').value.trim();
+      if(!name || !way || !msg){
+        showToast('请把称呼、联系方式和内容填写完整');
+        return;
+      }
+      showToast('提交成功，' + name + '，我们会尽快联系你');
+      form.reset();
+    });
+  }
+
+  /* ---------- 回到顶部 ---------- */
+  var topBtn = document.getElementById('mpxTop');
+  window.addEventListener('scroll', function(){
+    if(!topBtn) return;
+    if(window.scrollY > 600){
+      topBtn.classList.add('is-show');
+    }else{
+      topBtn.classList.remove('is-show');
+    }
+  }, {passive:true});
+  if(topBtn){
+    topBtn.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  /* ---------- 数字滚动 ---------- */
+  var counters = document.querySelectorAll('[data-mpx-count]');
+  if(counters.length && 'IntersectionObserver' in window){
+    var done = new WeakSet();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !done.has(entry.target)){
+          done.add(entry.target);
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-mpx-count'), 10);
+          var suffix = el.querySelector('small');
+          var suffixHTML = suffix ? suffix.outerHTML : '';
+          var start = 0;
+          var step = Math.max(1, Math.floor(target / 40));
+          var t = setInterval(function(){
+            start += step;
+            if(start >= target){
+              start = target;
+              clearInterval(t);
+            }
+            el.innerHTML = start.toLocaleString('en-US') + suffixHTML;
+          }, 26);
+        }
+      });
+    }, {threshold:.4});
+    counters.forEach(function(c){ io.observe(c); });
+  }
+
+})();
+</script>
+</body>
+              </html>
